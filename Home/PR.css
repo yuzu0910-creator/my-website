@@ -1,0 +1,550 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0 auto;
+}
+
+header {
+    position: fixed;
+    top: -96px;
+    left: 0;
+    width: 100%;
+    height: 96px;
+    background-color: rgba(0, 0, 0, 0.025);
+    transition: top 0.6s ease;
+    z-index: 100;
+}
+
+header.show {
+    top: 0;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+header li {
+    height: 100%;
+    margin: 0 4px;
+    font-size: 30px;
+}
+
+header li a {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    height: 100%;
+    padding: 0 40px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.4s ease;
+}
+
+header a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+    z-index: -1;
+}
+
+header a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+header:has(a:hover) a {
+    opacity: 0.3;
+    transition: opacity 0.4s ease;
+}
+
+header:has(a:hover) a:hover {
+    opacity: 1;
+}
+
+header li .border-mid {
+    border-left: 2px dotted rgba(0, 0, 0, 0.5);
+    height: 85%;
+    margin: 15% 12px;
+}
+
+section.hv {
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+.Home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(190, 243, 255, 0.3),
+        rgb(226, 251, 255)
+    ),
+    url("HomeImg.jpg");
+}
+
+.Home div {
+    transform: translateY(250px);
+    animation: 
+        UpDiv 1.5s ease-in-out 2s forwards,
+        UpDiv2 1.5s ease-in-out 6.5s forwards,
+        UpDiv3 1.5s ease-in-out 10s forwards;
+
+    text-align: center;
+}
+
+@keyframes UpDiv {
+    from {
+        transform: translateY(250px);
+    }
+
+    to {
+        transform: translateY(150px);
+    }
+}
+
+@keyframes UpDiv2 {
+    from {
+        transform: translateY(150px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes UpDiv3 {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-50px);
+    }
+}
+
+.Home h1 {
+    font-size: 126px;
+    opacity: 0;
+    animation: 
+        FadeIn 1s linear 1s forwards,
+        SizeDown 1.5s ease-in-out 2s forwards;
+}
+
+@keyframes FadeIn {
+    from {
+        opacity: 0;
+    }
+    
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes SizeDown {
+    from {
+        font-size: 126px;
+    }
+
+    to {
+        font-size: 52px;
+    }
+}
+
+.Home p.p1 span{
+    font-size: 36px;
+    opacity: 0;
+    animation: 
+        FadeIn 2s linear forwards,
+        SizeDown2 1.5s ease-in-out 6.5s forwards ;
+    font-weight: 500;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.Home p.p1 span:nth-of-type(1){animation-delay: 4s, 6.5s;}
+.Home p.p1 span:nth-of-type(2){animation-delay: 4.5s, 6.5s;}
+.Home p.p1 span:nth-of-type(3){animation-delay: 5s, 6.5s;}
+
+@keyframes SizeDown2 {
+    from {
+        font-size: 36px;
+    }
+
+    to {
+        font-size: 28px;
+    }
+}
+
+.Home p.p2 {
+    margin-top: 36px;
+}
+
+.Home p.p2 span{
+    font-size: 36px;
+    opacity: 0;
+    animation: 
+        FadeIn 2s linear forwards,
+        SizeDown2 1.5s ease-in-out 10s forwards ;
+    font-weight: 500;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.Home p.p2 span:nth-of-type(1){animation-delay: 7s, 10s;}
+.Home p.p2 span:nth-of-type(2){animation-delay: 7.5s, 10s;}
+.Home p.p2 span:nth-of-type(3){animation-delay: 8s, 10s;}
+.Home p.p2 span:nth-of-type(4){animation-delay: 8.5s, 10s;}
+.Home p.p2 span:nth-of-type(5){animation-delay: 9s, 10s;}
+
+
+
+.Home button {
+    opacity: 0;
+    margin-top: 92px;
+    width: 90%;
+    height: 48px;
+    font-size: 24px;
+    font-family: "Georgia", sans-serif;
+    animation: ShowSet 1.5s linear 11.5s forwards;
+    border: 0;
+    color: white;
+    background-color: rgb(97, 181, 255);
+    transition: all 0.3s ease;
+}
+
+.Home button:hover {
+    background-color: rgb(159, 177, 231);
+}
+
+@keyframes ShowSet {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }    
+}
+
+.airSection1 {
+    width: 100%;
+    height: 100vh;
+    background: 
+    linear-gradient(
+        to bottom,
+        rgb(226, 251, 255),
+        rgb(255, 237, 213)
+        
+    );
+}
+
+.About {
+    position: relative;
+    background: rgb(255, 237, 213);
+}
+
+.About div.backTitle {
+    position: absolute;
+    height: 850px;
+}
+
+.About h1 {
+    margin: 0;
+    font-size: 300px;
+    font-weight: 1000;
+    letter-spacing: -5px;
+    transform: translate(-15%, 50%) rotate(90deg) scaleY(2.5);
+    transform-origin: center;
+    color: rgba(0, 0, 0, 0.08);
+}
+
+.About div.contents {
+    position: absolute;
+    right:0;
+    top: 0;
+    width: 70%;
+    height: 100%;
+    text-align: left;
+}
+
+.About div.contents span {
+    position: absolute;
+    top: 15%;
+    left: 22%;
+
+    font-size: 36px;
+    font-family: "Georgia", sans-serif;
+    border-bottom: 2px solid black;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.About div.contents span.show {
+    opacity: 1;
+}
+
+.About div.contents .c-p {
+    position: absolute;
+    top: 24%;
+    left: 14%;
+    font-size: 28px;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    
+    padding-bottom: 36px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.About div.contents .c-p.show {
+    opacity: 1;
+}
+
+.About div.contents div.interestsList {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.About div.contents div.interestsList.show {
+    opacity: 1;
+}
+
+.About div.contents div.interestsList p {
+    position: absolute;
+    top: 10%;
+    left: 12%;
+
+    font-family: "Georgia", sans-serif;
+    font-size: 62px;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.About div.contents div.interestsList ul {
+    position: absolute;
+    top: -20%;
+    right: 25%;
+    list-style: none;
+    text-align: center;
+}
+
+.About div.contents div.interestsList li {
+    margin: 34px 0;
+    font-size: 28px;
+}
+
+.About div.contents div.interestsList .buttom-border {
+    width: calc(100% + 100px);
+    transform: translateX(-50px);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.About div.contents div.interestsList li a {
+    background-color: rgba(0, 0, 0, 0.02);
+    border: 0;
+    text-decoration: none;
+    padding: 16px 42px;
+    color: black;
+    font-size: 18px;
+    font-family: "Georgia", sans-serif;
+    margin-bottom: 0;
+    transition: all 0.2s ease;
+}
+
+.About div.contents div.interestsList li a:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+#About {
+    scroll-margin-top: 96px;
+}
+
+.airSection2 {
+    width: 100%;
+    height: 100vh;
+    background:
+    linear-gradient(
+        to bottom,
+        rgb(255, 237, 213),
+        rgb(255, 247, 213),
+        rgb(255, 251, 191)
+    );
+}
+
+.Interests {
+    width: 100%;
+    height: 100vh;
+    background:rgb(255, 251, 191);
+    text-align: center;
+}
+
+.Interests .title h1 {
+    margin: 0;
+    font-size: 118px;
+    opacity: 0;
+    transition: all 0.4s ease
+}
+
+.Interests .title.show h1 {
+    opacity: 1;
+}
+
+.Interests .title.sizeDown h1 {
+    font-size: 96px;
+}
+
+.Interests .contents div {
+    margin-bottom: 36px;
+}
+
+#Interests {
+    scroll-margin-top: 96px;
+}
+
+.airSection3 {
+    width: 100%;
+    height: 100vh;
+    background:
+    linear-gradient(
+        to bottom,
+        rgb(255, 251, 191),
+        rgb(227, 255, 191),
+        rgb(191, 255, 191)
+    );
+}
+
+.Guitar {
+    width: 100%;
+    height: 100vh;
+    background:rgb(191, 255, 191);
+    text-align: center;
+}
+
+.Guitar h1 {
+    font-size: 118px;
+    margin: 0;
+    opacity: 0;
+    transition: all 0.4s ease
+}
+
+.Guitar h1.show {
+    opacity: 1;
+    
+}
+
+.Guitar h1.sizeDown {
+    font-size: 96px;
+}
+
+.Guitar .contentsG {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.Guitar .contentsG.show {
+    opacity: 1;
+}
+
+.Guitar .contentsG div {
+    margin-bottom: 36px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+#Guitar {
+    scroll-margin-top: 96px;
+}
+
+.airSection4 {
+    width: 100%;
+    height: 100vh;
+    background:
+    linear-gradient(
+        to bottom,
+        rgb(191, 255, 191),
+        rgb(255, 224, 168)
+    );
+}
+
+.Composing {
+    width: 100%;
+    height: 100vh;
+    background:rgb(255, 224, 168);
+    text-align: center;
+}
+
+.Composing h1 {
+    font-size: 118px;
+    margin: 0;
+    opacity: 0;
+    transition: all 0.4s ease
+}
+
+.Composing h1.show {
+    opacity: 1;
+}
+
+.Composing h1.sizeDown {
+    font-size: 96px;
+}
+
+.Composing .contentsC {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.Composing .contentsC.show {
+    opacity: 1;
+}
+
+.Composing .contentsC div {
+    margin-bottom: 36px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+#Composing {
+    scroll-margin-top: 96px;
+}
+
+.Message {
+    position: relative;
+    width: 100%;
+    height: 852px;
+}
+
+.Message h1 {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+}
+
+#Message {
+    scroll-margin-top: 96px;
+}
