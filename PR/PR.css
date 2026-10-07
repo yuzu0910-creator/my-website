@@ -1,0 +1,922 @@
+/* =========================================================
+   基本設定
+   1920pxを基準にして、1280pxまで比例縮小
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+
+    /*
+        1920px = 1
+        1280px = 約0.667
+
+        つまりHDではFull HD時の約2/3になる
+    */
+    --scale: clamp(
+        0.6666667,
+        calc(100vw / 1920px),
+        1
+    );
+}
+
+body {
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   Header
+   ========================================================= */
+
+header {
+    position: fixed;
+    top: calc(-96px * var(--scale));
+    left: 0;
+    width: 100%;
+    height: calc(96px * var(--scale));
+
+    background-color: rgba(0, 0, 0, 0.025);
+
+    transition: top 0.6s ease;
+    z-index: 100;
+}
+
+header.show {
+    top: 0;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+}
+
+header li {
+    height: 100%;
+
+    margin: 0 calc(4px * var(--scale));
+
+    font-size: calc(30px * var(--scale));
+}
+
+header li a {
+    position: relative;
+
+    text-decoration: none;
+    color: black;
+
+    height: 100%;
+
+    padding: 0 calc(40px * var(--scale));
+
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+
+    transition: opacity 0.4s ease;
+}
+
+header a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.1);
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition: transform 0.5s ease;
+
+    z-index: -1;
+}
+
+header a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+header:has(a:hover) a {
+    opacity: 0.3;
+
+    transition: opacity 0.4s ease;
+}
+
+header:has(a:hover) a:hover {
+    opacity: 1;
+}
+
+header li .border-mid {
+    border-left: calc(2px * var(--scale)) dotted rgba(0, 0, 0, 0.5);
+
+    height: 85%;
+
+    margin: 15% calc(12px * var(--scale));
+}
+
+
+/* =========================================================
+   共通 section
+   ========================================================= */
+
+section.hv {
+    height: 100vh;
+
+    scroll-snap-align: start;
+}
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
+.Home {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(190, 243, 255, 0.3),
+        rgb(226, 251, 255)
+    ),
+    url("HomeImg.jpg");
+}
+
+.Home div {
+
+    transform:
+        translateY(calc(250px * var(--scale)));
+
+    animation:
+        UpDiv 1.5s ease-in-out 2s forwards,
+        UpDiv2 1.5s ease-in-out 6.5s forwards,
+        UpDiv3 1.5s ease-in-out 10s forwards;
+
+    text-align: center;
+}
+
+@keyframes UpDiv {
+
+    from {
+        transform:
+            translateY(calc(250px * var(--scale)));
+    }
+
+    to {
+        transform:
+            translateY(calc(150px * var(--scale)));
+    }
+}
+
+@keyframes UpDiv2 {
+
+    from {
+        transform:
+            translateY(calc(150px * var(--scale)));
+    }
+
+    to {
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes UpDiv3 {
+
+    from {
+        transform:
+            translateY(0);
+    }
+
+    to {
+        transform:
+            translateY(calc(-50px * var(--scale)));
+    }
+}
+
+
+.Home h1 {
+
+    font-size: calc(126px * var(--scale));
+
+    opacity: 0;
+
+    animation:
+        FadeIn 1s linear 1s forwards,
+        SizeDown 1.5s ease-in-out 2s forwards;
+}
+
+@keyframes FadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes SizeDown {
+
+    from {
+        font-size: calc(126px * var(--scale));
+    }
+
+    to {
+        font-size: calc(52px * var(--scale));
+    }
+}
+
+
+.Home p.p1 span {
+
+    font-size: calc(36px * var(--scale));
+
+    opacity: 0;
+
+    animation:
+        FadeIn 2s linear forwards,
+        SizeDown2 1.5s ease-in-out 6.5s forwards;
+
+    font-weight: 500;
+
+    font-family:
+        "Zen Kaku Gothic New",
+        sans-serif;
+}
+
+.Home p.p1 span:nth-of-type(1) {
+    animation-delay: 4s, 6.5s;
+}
+
+.Home p.p1 span:nth-of-type(2) {
+    animation-delay: 4.5s, 6.5s;
+}
+
+.Home p.p1 span:nth-of-type(3) {
+    animation-delay: 5s, 6.5s;
+}
+
+
+@keyframes SizeDown2 {
+
+    from {
+        font-size: calc(36px * var(--scale));
+    }
+
+    to {
+        font-size: calc(28px * var(--scale));
+    }
+}
+
+
+.Home p.p2 {
+    margin-top: calc(36px * var(--scale));
+}
+
+.Home p.p2 span {
+
+    font-size: calc(36px * var(--scale));
+
+    opacity: 0;
+
+    animation:
+        FadeIn 2s linear forwards,
+        SizeDown2 1.5s ease-in-out 10s forwards;
+
+    font-weight: 500;
+
+    font-family:
+        "Zen Kaku Gothic New",
+        sans-serif;
+}
+
+.Home p.p2 span:nth-of-type(1) {
+    animation-delay: 7s, 10s;
+}
+
+.Home p.p2 span:nth-of-type(2) {
+    animation-delay: 7.5s, 10s;
+}
+
+.Home p.p2 span:nth-of-type(3) {
+    animation-delay: 8s, 10s;
+}
+
+.Home p.p2 span:nth-of-type(4) {
+    animation-delay: 8.5s, 10s;
+}
+
+.Home p.p2 span:nth-of-type(5) {
+    animation-delay: 9s, 10s;
+}
+
+
+.Home button {
+
+    opacity: 0;
+
+    margin-top: calc(92px * var(--scale));
+
+    width: 90%;
+
+    height: calc(48px * var(--scale));
+
+    font-size: calc(24px * var(--scale));
+
+    font-family: "Georgia", sans-serif;
+
+    animation:
+        ShowSet 1.5s linear 11.5s forwards;
+
+    border: 0;
+
+    color: white;
+
+    background-color: rgb(97, 181, 255);
+
+    transition: all 0.3s ease;
+}
+
+.Home button:hover {
+    background-color: rgb(159, 177, 231);
+}
+
+@keyframes ShowSet {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   空白 / グラデーション
+   ========================================================= */
+
+.airSection1 {
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgb(226, 251, 255),
+        rgb(255, 237, 213)
+    );
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.About {
+
+    position: relative;
+
+    background:
+        rgb(255, 237, 213);
+}
+
+.About div.backTitle {
+
+    position: absolute;
+
+    height: calc(850px * var(--scale));
+}
+
+.About h1 {
+
+    margin: 0;
+
+    font-size: calc(300px * var(--scale));
+
+    font-weight: 1000;
+
+    letter-spacing: calc(-5px * var(--scale));
+
+    transform:
+        translate(
+            -15%,
+            50%
+        )
+        rotate(90deg)
+        scaleY(2.5);
+
+    transform-origin: center;
+
+    color:
+        rgba(0, 0, 0, 0.08);
+}
+
+
+.About div.contents {
+
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    width: 70%;
+    height: 100%;
+
+    text-align: left;
+}
+
+
+.About div.contents span {
+
+    position: absolute;
+
+    top: 15%;
+    left: 22%;
+
+    font-size: calc(36px * var(--scale));
+
+    font-family: "Georgia", sans-serif;
+
+    border-bottom:
+        calc(2px * var(--scale))
+        solid black;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+.About div.contents span.show {
+    opacity: 1;
+}
+
+
+.About div.contents .c-p {
+
+    position: absolute;
+
+    top: 24%;
+    left: 14%;
+
+    font-size: calc(28px * var(--scale));
+
+    font-family:
+        "Zen Kaku Gothic New",
+        sans-serif;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s ease;
+
+    padding-bottom:
+        calc(36px * var(--scale));
+
+    border-bottom:
+        calc(2px * var(--scale))
+        solid rgba(0, 0, 0, 0.3);
+}
+
+.About div.contents .c-p.show {
+    opacity: 1;
+}
+
+
+.About div.contents div.interestsList {
+
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+    height: calc(300px * var(--scale));
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+.About div.contents div.interestsList.show {
+    opacity: 1;
+}
+
+
+.About div.contents div.interestsList p {
+
+    position: absolute;
+
+    top: 10%;
+    left: 12%;
+
+    font-family:
+        "Georgia",
+        sans-serif;
+
+    font-size:
+        calc(62px * var(--scale));
+
+    color:
+        rgba(0, 0, 0, 0.4);
+}
+
+
+.About div.contents div.interestsList ul {
+
+    position: absolute;
+
+    top: -20%;
+    right: 25%;
+
+    list-style: none;
+
+    text-align: center;
+}
+
+
+.About div.contents div.interestsList li {
+
+    margin:
+        calc(34px * var(--scale))
+        0;
+
+    font-size:
+        calc(28px * var(--scale));
+}
+
+
+.About div.contents div.interestsList .buttom-border {
+
+    width:
+        calc(
+            100% +
+            (100px * var(--scale))
+        );
+
+    transform:
+        translateX(
+            calc(-50px * var(--scale))
+        );
+
+    border-bottom:
+        calc(2px * var(--scale))
+        solid rgba(0, 0, 0, 0.2);
+}
+
+
+.About div.contents div.interestsList li a {
+
+    background-color:
+        rgba(0, 0, 0, 0.02);
+
+    border: 0;
+
+    text-decoration: none;
+
+    padding:
+        calc(16px * var(--scale))
+        calc(42px * var(--scale));
+
+    color: black;
+
+    font-size:
+        calc(18px * var(--scale));
+
+    font-family:
+        "Georgia",
+        sans-serif;
+
+    margin-bottom: 0;
+
+    transition:
+        all 0.2s ease;
+}
+
+.About div.contents div.interestsList li a:hover {
+
+    background-color:
+        rgba(0, 0, 0, 0.06);
+}
+
+
+#About {
+    scroll-margin-top:
+        calc(96px * var(--scale));
+}
+
+
+/* =========================================================
+   AIR 2
+   ========================================================= */
+
+.airSection2 {
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgb(255, 237, 213),
+        rgb(255, 247, 213),
+        rgb(255, 251, 191)
+    );
+}
+
+
+/* =========================================================
+   INTERESTS
+   ========================================================= */
+
+.Interests {
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+        rgb(255, 251, 191);
+
+    text-align: center;
+}
+
+
+.Interests .title h1 {
+
+    margin: 0;
+
+    font-size:
+        calc(118px * var(--scale));
+
+    opacity: 0;
+
+    transition:
+        all 0.4s ease;
+}
+
+.Interests .title.show h1 {
+    opacity: 1;
+}
+
+.Interests .title.sizeDown h1 {
+
+    font-size:
+        calc(96px * var(--scale));
+}
+
+
+.Interests .contentsI div {
+
+    margin-bottom:
+        calc(36px * var(--scale));
+
+    font-size:
+        calc(16px * var(--scale) );
+
+    font-weight: 500;
+
+    line-height: 1.5;
+
+}
+
+.Interests .contentsI {
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+.Interests .contentsI.show {
+    opacity: 1;
+}
+
+#Interests {
+
+    scroll-margin-top:
+        calc(296px * var(--scale));
+    
+    
+}
+
+
+/* =========================================================
+   AIR 3
+   ========================================================= */
+
+.airSection3 {
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgb(255, 251, 191),
+        rgb(227, 255, 191),
+        rgb(191, 255, 191)
+    );
+}
+
+
+/* =========================================================
+   GUITAR
+   ========================================================= */
+
+.Guitar {
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+        rgb(191, 255, 191);
+
+    text-align: center;
+}
+
+
+.Guitar h1 {
+
+    font-size:
+        calc(118px * var(--scale));
+
+    margin: 0;
+
+    opacity: 0;
+
+    transition:
+        all 0.4s ease;
+}
+
+.Guitar h1.show {
+    opacity: 1;
+}
+
+.Guitar h1.sizeDown {
+
+    font-size:
+        calc(96px * var(--scale));
+}
+
+
+.Guitar .contentsG {
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+.Guitar .contentsG.show {
+    opacity: 1;
+}
+
+
+.Guitar .contentsG div {
+
+    margin-bottom:
+        calc(36px * var(--scale));
+
+    font-size:
+        calc(16px * var(--scale));
+
+    font-weight: 500;
+
+    line-height: 1.5;
+}
+
+
+#Guitar {
+
+    scroll-margin-top:
+        calc(96px * var(--scale));
+}
+
+
+/* =========================================================
+   AIR 4
+   ========================================================= */
+
+.airSection4 {
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgb(191, 255, 191),
+        rgb(255, 224, 168)
+    );
+}
+
+
+/* =========================================================
+   COMPOSING
+   ========================================================= */
+
+.Composing {
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+        rgb(255, 224, 168);
+
+    text-align: center;
+}
+
+
+.Composing h1 {
+
+    font-size:
+        calc(118px * var(--scale));
+
+    margin: 0;
+
+    opacity: 0;
+
+    transition:
+        all 0.4s ease;
+}
+
+.Composing h1.show {
+    opacity: 1;
+}
+
+.Composing h1.sizeDown {
+
+    font-size:
+        calc(96px * var(--scale));
+}
+
+
+.Composing .contentsC {
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+.Composing .contentsC.show {
+    opacity: 1;
+}
+
+
+.Composing .contentsC div {
+
+    margin-bottom:
+        calc(32px * var(--scale));
+
+    font-size:
+        calc(16px * var(--scale));
+
+    font-weight: 500;
+
+    line-height: 1.4;
+}
+
+
+#Composing {
+
+    scroll-margin-top:
+        calc(96px * var(--scale));
+}
+
+/* =========================================================
+   HDより小さい画面には、このレイアウトを適用しない
+   ========================================================= */
+
+@media (max-width: 1279px) {
+
+    html {
+        --scale: 0.6666667;
+    }
+
+}
