@@ -1,12 +1,7 @@
 html {
     scroll-behavior: smooth;
 
-    /*
-        1920px = 1
-        1280px = 約0.667
 
-        つまりHDではFull HD時の約2/3になる
-    */
     --scale: clamp(
         0.6666667,
         calc(100vw / 1920px),
