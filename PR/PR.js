@@ -1,9 +1,6 @@
 history.scrollRestoration = "manual";
 
 
-/* =========================================================
-   ページ読み込み時に一番上へ
-   ========================================================= */
 
 window.addEventListener("load", () => {
 
@@ -12,10 +9,6 @@ window.addEventListener("load", () => {
 });
 
 
-/* =========================================================
-   画面サイズに合わせた倍率
-   1920 × 1080 を基準
-   ========================================================= */
 
 function getScale() {
 
@@ -27,9 +20,6 @@ function getScale() {
 }
 
 
-/* =========================================================
-   Header
-   ========================================================= */
 
 const header =
     document.getElementById("header");
@@ -37,13 +27,7 @@ const header =
 
 window.addEventListener("scroll", () => {
 
-    /*
-        元の
-        window.innerHeight * 0.85
-
-        という考え方はそのまま
-    */
-
+   
     if (
         window.scrollY >
         window.innerHeight * 0.85
@@ -60,9 +44,6 @@ window.addEventListener("scroll", () => {
 });
 
 
-/* =========================================================
-   ABOUTボタン
-   ========================================================= */
 
 const button_About =
     document.getElementById("aboutButton");
@@ -80,9 +61,6 @@ button_About.addEventListener("click", () => {
 });
 
 
-/* =========================================================
-   ABOUT
-   ========================================================= */
 
 const AboutShowh1 =
     document.getElementById("About-h1");
@@ -143,9 +121,6 @@ window.addEventListener("scroll", () => {
 });
 
 
-/* =========================================================
-   INTERESTS
-   ========================================================= */
 
 const buttons_Interests =
     document.querySelectorAll(".InterestsButton");
@@ -176,9 +151,6 @@ const interestsContents =
     document.querySelector(".contentsI");
 
 
-/* =========================================================
-   GUITAR
-   ========================================================= */
 
 const guitarTitle =
     document.getElementById("titleGuitar");
@@ -187,9 +159,6 @@ const guitarContents =
     document.querySelector(".contentsG");
 
 
-/* =========================================================
-   COMPOSING
-   ========================================================= */
 
 const composingTitle =
     document.getElementById("titleComposing");
@@ -198,20 +167,13 @@ const composingContents =
     document.querySelector(".contentsC");
 
 
-/* =========================================================
-   スクロールによる表示
-   ========================================================= */
 
 window.addEventListener("scroll", () => {
 
     const scale = getScale();
 
 
-    /* -------------------------
-       Interests title
-       元：3350px
-       ------------------------- */
-
+    
     if (
         window.scrollY >
         3350 * scale
@@ -226,11 +188,7 @@ window.addEventListener("scroll", () => {
     }
 
 
-    /* -------------------------
-       Interests contents
-       元：3500px
-       ------------------------- */
-
+    
     if (
         window.scrollY >
         3500 * scale
@@ -249,11 +207,7 @@ window.addEventListener("scroll", () => {
     }
 
 
-    /* -------------------------
-       Guitar title
-       元：5200px
-       ------------------------- */
-
+    
     if (
         window.scrollY >
         5200 * scale
@@ -268,11 +222,7 @@ window.addEventListener("scroll", () => {
     }
 
 
-    /* -------------------------
-       Guitar contents
-       元：5450px
-       ------------------------- */
-
+    
     if (
         window.scrollY >
         5450 * scale
@@ -291,11 +241,7 @@ window.addEventListener("scroll", () => {
     }
 
 
-    /* -------------------------
-       Composing title
-       元：7150px
-       ------------------------- */
-
+    
     if (
         window.scrollY >
         7150 * scale
@@ -310,11 +256,7 @@ window.addEventListener("scroll", () => {
     }
 
 
-    /* -------------------------
-       Composing contents
-       元：7400px
-       ------------------------- */
-
+    
     if (
         window.scrollY >
         7400 * scale
